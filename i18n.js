@@ -655,6 +655,10 @@ module.exports = (function() {
       request.regions = [defaultLocale];
       request.language = defaultLocale;
       request.region = defaultLocale;
+        
+      if (request.session.language) {
+        return i18n.setLocale(request, request.session.language);
+      }
 
       // a query parameter overwrites all
       if (queryParameter && request.url) {
